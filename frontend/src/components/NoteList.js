@@ -9,7 +9,7 @@ const NoteList = (props) => {
           key={note.id}
           onClick={() => props.onSelect(note.id)}
           title={note.title}
-          body={note.body.length > 20 ? note.body.substring(0, 17).concat('...') : note.body}
+          caption={note.body.length > 20 ? note.body.substring(0, 17).concat('...') : note.body}
         />
       ))}
     </ul>
