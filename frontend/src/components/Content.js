@@ -3,19 +3,23 @@ import NoteEditor from './NoteEditor';
 import NoteViewer from './NoteViewer';
 import Instructions from './Instructions';
 
-/*
-  Advice: If you cannot figure out how to get this component to work,
-          move the div and renderContent up into NoteContainer and
-          try to get it to work in the parent first.
-          Then complete the rest of your app before attempting to
-          refactor to get this Content component to work.
-*/
 class Content extends Component {
+  state = {
+    editToggledOn: false
+  }
+
+  handleEditClick = () => this.setState({editToggledOn: !this.state.editToggledOn})
+
+  editNote = (id, title, body) => {
+    this.handleEditClick()
+    this.props.editNote(id, title, body)
+  }
+
   renderContent = () => {
-    if (false) {
-      return <NoteEditor />;
-    } else if (false) {
-      return <NoteViewer />;
+    if (this.state.editToggledOn) {
+      return <NoteEditor id={this.props.id} body={this.props.body} title={this.props.title} handleEditClick={this.handleEditClick} editNote={this.editNote}/>;
+    } else if (true) {
+      return <NoteViewer id={this.props.id} body={this.props.body} title={this.props.title} handleEditClick={this.handleEditClick}/>;
     } else {
       return <Instructions />;
     }

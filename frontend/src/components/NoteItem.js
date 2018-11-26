@@ -1,9 +1,9 @@
 import React from 'react';
 
 const NoteList = (props) => (
-  <li>
-    <h2>Title</h2>
-    <p>Caption...</p>
+  <li onClick={props.onClick} id={props.id}>
+    <h2>{props.title}</h2>
+    <p>{props.body}</p>
   </li>
 );
 
